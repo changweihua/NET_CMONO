@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>layout 后台大布局 - Layui</title>
+    <link rel="stylesheet" href="@Url.Content("~/layui/css/layui.css")">
+    @RenderSection("styles", false)
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">NCM</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item nav-toggle">
+                    <a class="zoom-toggle" href="#!"><i class="layui-icon layui-icon-shrink-right"></i></a>
+                </li>
+
+                <li class="layui-nav-item"><a href="">控制台</a></li>
+                <li class="layui-nav-item"><a href="">商品管理</a></li>
+                <li class="layui-nav-item"><a href="">用户</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">其它系统</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">邮件管理</a></dd>
+                        <dd><a href="">消息管理</a></dd>
+                        <dd><a href="">授权管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                @await Component.InvokeAsync("Layout", new { layoutModule = LayoutModule.NAV_RIGHT }) 
+            </ul>
+        </div>
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">咬文嚼字</a>
+                        <dl class="layui-nav-child">
+                            <dd class="nav-click" data-id="1" data-title="类别管理" data-href="@Url.RouteUrl("NCMRoute", new { action = "Category", controller = "Article" })" data-icon="AAA"  data-type="tabAdd"><a href="javascript:;">类别管理</a></dd>
+                            <dd class="nav-click" data-id="2" data-title="文章管理" data-href="@Url.RouteUrl("NCMRoute", new { action = "Index", controller = "Article" })" data-icon="AAA"  data-type="tabAdd"><a href="javascript:;">文章管理</a></dd>
+                            <dd class="nav-click" data-id="3" data-title="AAA" data-href="AAA" data-icon="AAA"  data-type="tabAdd"><a href="javascript:;">超链接</a></dd>
+                            <!-- <dd title="按钮" class="nav-click"><a href="javascript:;" data-url="button.html"><i class="layui-icon" data-icon=""></i><cite>按钮</cite></a></dd> -->
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item"><a href="">云市场</a></li>
+                    <li class="layui-nav-item"><a href="">发布商品</a></li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">系统设置</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="@Url.RouteUrl("NCMRoute", new { action = "Site", controller = "Config" })">基本设置</a></dd>
+                            <dd><a href="@Url.RouteUrl("NCMRoute", new { action = "SEO", controller = "Config" })">SEO设置</a></dd>
+                            <dd><a href="javascript:;">列表三</a></dd>
+                            <dd><a href="">超链接</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div>
+                <div class="layui-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            @await Component.InvokeAsync("Layout", new { layoutModule = LayoutModule.FOOTER }) 
+        </div>
+    </div>
+    @RenderSection("extradom", false)
+    <script src="@Url.Content("~/layui/layui.js")"></script>
+    <script>
+        layui.config({
+            //dir: '/res/layui/', //layui.js 所在路径（注意，如果是script单独引入layui.js，无需设定该参数。），一般情况下可以无视
+            //version: false, //一般用于更新模块缓存，默认不开启。设为true即让浏览器不缓存。也可以设为一个固定的值，如：201610
+            debug: true, //用于开启调试模式，默认false，如果设为true，则JS模块的节点会保留在页面
+            //base: '' //设定扩展的Layui模块的所在目录，一般用于外部模块扩展
+        });
+
+        //JavaScript代码区域
+        layui.use(['layer', 'laypage', 'laydate', 'element'], function() {
+            var element = layui.element;
+            var $ = layui.$;
+
+//获取hash来切换选项卡，假设当前地址的hash为lay-id对应的值
+  var layid = location.hash.replace(/^#panel=/, '');
+  element.tabChange('togglePanel', layid); //假设当前地址为：http://a.com#test1=222，那么选项卡会自动切换到“发送消息”这一项
+  
+  //监听Tab切换，以改变地址hash值
+  element.on('tab(togglePanel)', function(){
+    location.hash = 'panel='+ this.getAttribute('lay-id');
+  });
+
+  var $content = $('.layui-body');//用来获取高度
+
+            //iframe自适应
+            $(window).on('resize', function () {
+                $content.find('iframe').each(function () {
+                    $(this).height($content.height() - 50);
+                });
+            }).resize();
+
+            //只展开一个二级菜单
+            $('.layui-bg-black').find('li.layui-nav-item').each(function () {
+                $(this).on('click', function () {
+                    $(this).siblings().removeClass('layui-nav-itemed');
+                });
+            });
+
+            //显示与隐藏左侧导航
+            $('.zoom-toggle').on('click', function () {
+                var sideWidth = $('.layui-bg-black').width();
+                if (sideWidth === 200) {
+                    $('.layui-body').animate({
+                        left: '0px'
+                    }); 
+                    $('.layui-footer').animate({
+                        left: '0px'
+                    });
+                    $('.layui-bg-black').animate({
+                        width: '0px'
+                    });
+                } else {
+                    $('.layui-body').animate({
+                        left: '200px'
+                    });
+                    $('.layui-footer').animate({
+                        left: '200px'
+                    });
+                    $('.layui-bg-black').animate({
+                        width: '200px'
+                    });
+                }
+
+                $('.zoom-toggle').find('i').toggleClass('layui-icon-spread-left layui-icon-shrink-right');
+
+                return false;
+            });
+
+
+
+            //触发事件  
+            var active = {
+                tabAdd: function (othis) {
+                    //新增一个Tab项
+                    element.tabAdd('togglePanel', {
+                        title: '<i class="layui-icon">' + othis.data('icon') + '</i>' + othis.data('title') + '<i class="layui-icon layui-unselect layui-tab-close">&#x1006;</i>' 
+                        , content: '<iframe src="' + othis.data('href') +'" style="width:100%;height:' + ($content.height() - 50) + 'px;" frameborder="0"></iframe>'
+                        , id: othis.data('id')
+                    });
+                    //增加点击关闭事件
+                    var r = $(".layui-tab-title").find("li");
+                    //每次新打开tab都是最后一个，所以只对最后一个tab添加点击关闭事件
+                    r.eq(r.length - 1).children("i").on("click", function () {
+                        element.tabDelete("togglePanel", $(this).parent("li").attr('lay-id'));
+                    }), element.tabChange("togglePanel", othis.data('id'));
+                    othis[0].dataset.type = 'tabChange';//打开过后将data-type修改为 tabChange 下次点击就是切换了
+                    //console.log(othis);
+                    element.init();
+                }
+                , tabChange: function (othis) {
+                    //切换到指定Tab项
+                    element.tabChange('togglePanel', othis.data('id')); //切换到
+                    $('.layui-show')[0].children[0].contentWindow.frames.location.reload(true);//刷新页面 只能刷新自己项目下的网页，其他会报跨域错误
+                    //console.log($('.layui-show')[0].children);
+                }
+            };
+            //左侧导航点击监听
+            $('.nav-click').on('click', function () {
+                var othis = $(this), type = othis[0].dataset.type;
+                active[type] ? active[type].call(this, othis) : '';
+            });
+
+
+        });
+    </script>
+    @RenderSection("scripts", false)
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+@model Dictionary<string, string>
+
+<li class="layui-nav-item">
+    <a href="javascript:;">
+        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+        @Model["UserName"]
+    </a>
+    <dl class="layui-nav-child">
+        <dd><a href="">基本资料</a></dd>
+        <dd><a href="">安全设置</a></dd>
+    </dl>
+</li>
+<li class="layui-nav-item"><a href="@Url.RouteUrl("NCMRoute", new { action = "Logout", controller = "Account" })">退出</a></li>

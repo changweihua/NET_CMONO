@@ -1,0 +1,54 @@
+	/*
+	 
+         _ _ _ _ _        _ _ _ _ _ _ _          _ _ __ _         __ __ _ _        _ _ __ _
+        /\   _ _ _\      /\   __   __  \        /\       \       /\   __   \      /\       \
+        \ \ \_ _ _/      \ \  \/\  \/\  \       \ \   _   \      \ \  \/\   \     \ \   _   \
+         \ \ \            \ \  \ \  \ \  \       \ \  \/\  \      \ \  \ \   \     \ \  \/\  \
+          \ \ \_ _ _ _     \ \  \ \  \ \  \       \ \       \      \ \  \ \   \     \ \       \
+           \ \_ _ _ __\     \ \__\ \__\ \__\       \ \_ __ __\      \ \__\ \_ _\     \ \_ __ __\
+            \/_ _ _ __/      \/__/ /__/ /__/        \/_ __ _ /       \/__/ /_ _/      \/_ __ _ /     .net
+	  
+	*/
+
+.chip {
+  display: inline-block;
+  height: 32px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 32px;
+  padding: 0 12px;
+  border-radius: 16px;
+  background-color: #e4e4e4; }
+  .chip img {
+    float: left;
+    margin: 0 8px 0 -12px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%; }
+  .chip i.material-icons {
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+    line-height: 32px;
+    padding-left: 8px; }
+	
+	        .shine {
+            background: #222 -webkit-gradient(linear,left top,right top,from(#222),to(#222),color-stop(0.5,#fff)) 0 0 no-repeat;
+            -webkit-background-size: 125px;
+            color: rgba(255,255,255,.1);
+            -webkit-background-clip: text;
+             -webkit-animation-name: shine;
+            -webkit-animation-duration: 2s;
+            -webkit-animation-iteration-count: infinite;
+        }
+
+        @-webkit-keyframes shine {
+            0% {
+                background-position: top left;
+            }
+
+            100% {
+                background-position: top right;
+            }
+        }

@@ -1,0 +1,70 @@
+@model ProjectModel 
+
+<div class="row">
+    <div class="col m6 l4 hide-on-small-only">
+        <video class="responsive-video" width="100%" controls>
+			<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
+		</video>
+    </div>
+
+    <div class="col m16 l8 hide-on-small-only">
+        <h3>@Model.ProjectName</h3>
+
+        <p class="flow-text">
+            @Html.Raw(Markdig.Markdown.ToHtml(Model.ProjectSummary))
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 m10 s11">
+        <div class="card">
+
+            <div class="card-content" id="pcontent">
+               @Html.Raw(Markdig.Markdown.ToHtml(Model.ProjectDetail))
+            </div>
+            <div class="card-action right-align">
+                <a href="index.php/project/list/1">项目列表</a>
+                <a href='#!'>查看代码</a>
+            </div>
+        </div>
+    </div>
+    <div class="col hide-on-small-only m2 l1 ">
+        <div id="ppinned" style="top:0px;margin-top:65px;z-index:99;">
+            <ul id="sectionlist" class="section table-of-contents">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+@await Component.InvokeAsync("Page", new { page = Page.CC }) 
+
+@section styles{
+    <link type="text/css" rel="stylesheet" href="http://www.cmono.net/markdownpad-github.css" />
+    <link type="text/css" rel="stylesheet" href="http://www.cmono.net/highlight/styles/Monokai.css" />
+}
+
+@section scripts{
+<script type="text/javascript">
+    $(function() {
+
+        console.log('highlight');
+
+        $("pre code").each(function(a, b) {
+            hljs.highlightBlock(b)
+        });
+        $.each($("#pcontent > h2"), function(a, b) {
+            var c = "section" + a;
+            $(this).attr("id", c).addClass("section scrollspy");
+            $("#sectionlist").append('<li><a href="#' + c + '">' + $(this).html() + "</a></li>")
+        });
+        $("#ppinned").pushpin({
+            bottom: $("#cprow").offset().top - 200,
+            offset: 65
+        });
+        $(".scrollspy").scrollSpy();
+    });
+</script>
+
+}

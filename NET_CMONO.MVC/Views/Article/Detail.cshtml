@@ -1,0 +1,40 @@
+@model ArticleModel 
+
+
+<div class="row">
+    <div class="col s12 m10 l11">
+        <div id="pcontent">
+            @Html.Raw(Markdig.Markdown.ToHtml(Model.ArticleContent))
+        </div>
+    </div>
+
+	<div  class="col hide-on-small-only m3 l2 ">
+		<div id="ppinned" style="top:0px;margin-top:65px;z-index:99;">
+			<ul id="sectionlist" class="section table-of-contents">
+
+			</ul>
+		</div>
+    </div>
+</div>
+@{
+    dynamic extraObj = new System.Dynamic.ExpandoObject();
+    extraObj.A = "AAAAA";
+    extraObj.Author = Model.ArticleAuthor;
+    extraObj.License = CC_LICENSE.CC4_INTERNATIONAL;
+    extraObj.ArticleID = Model.Id;
+}
+@await Component.InvokeAsync("Page", new { page = Page.CC_DONATE, extraObj = extraObj }) 
+
+@section styles{
+    <link type="text/css" rel="stylesheet" href="http://www.cmono.net/markdownpad-github.css" />
+    <link type="text/css" rel="stylesheet" href="http://www.cmono.net/highlight/styles/Monokai.css" />
+}
+
+@section scripts{
+
+	<script>$(function(){$('#pcontent img').attr('data-action', 'zoom');})</script>
+	<script type="text/javascript" src="/js/zoom.js"></script>
+
+}
+
+

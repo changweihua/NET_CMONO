@@ -1,0 +1,262 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <!--
+	 
+         _ _ _ _ _        _ _ _ _ _ _ _          _ _ __ _         __ __ _ _        _ _ __ _
+        /\   _ _ _\      /\   __   __  \        /\       \       /\   __   \      /\       \
+        \ \ \_ _ _/      \ \  \/\  \/\  \       \ \   _   \      \ \  \/\   \     \ \   _   \
+         \ \ \            \ \  \ \  \ \  \       \ \  \/\  \      \ \  \ \   \     \ \  \/\  \
+          \ \ \_ _ _ _     \ \  \ \  \ \  \       \ \       \      \ \  \ \   \     \ \       \
+           \ \_ _ _ __\     \ \__\ \__\ \__\       \ \_ __ __\      \ \__\ \_ _\     \ \_ __ __\
+            \/_ _ _ __/      \/__/ /__/ /__/        \/_ __ _ /       \/__/ /_ _/      \/_ __ _ /     .net
+	  
+	-->
+    <meta charset="utf-8">
+    <title>常伟华(Changweihua)的技术博客，共享最新开发技术心得 </title>
+
+    <meta name="baidu-tc-verification" content="58e624dd33932afdbf24819cebf17b08" />
+    <meta name="keywords" content="Changweihua,常伟华,NET,WPF,MVC,WCF,C#" />
+    <meta name="keyword" content="Changweihua,常伟华,NET,WPF,MVC,WCF,C#">
+    <meta name="author" content="常伟华 changweihua@@cmono.net changweihua@@outlook.com" />
+    <meta name="copyright" content="常伟华 Changweihua WeihuaChang Chang Weihua Lance Chang" />
+    <meta name="description" content="常伟华(Changweihua) 的个人站，共享最新.NET技术心得，探讨最新PC和移动端开发技术，共享开发中遇到的技术难题和解决方法">
+    <meta name="robots" content="index,follow">
+    <meta name="generator" content="常伟华 Changweihua WeihuaChang Lance Chang CMONO.NET, changweihua@@cmono.net" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" /> @await Component.InvokeAsync("SiteModule", new { siteModule = SiteModule.META }) @await Component.InvokeAsync("SiteModule", new { siteModule = SiteModule.COMPATIE })
+
+    @await Component.InvokeAsync("SiteModule", new {
+            siteModule=SiteModule.STYLE
+        })
+
+    <style>
+        body {
+            /*font:12px/1.5 '\5FAE\8F6F\96C5\9ED1','FZLanTingHeiS-UL-GB',Helvetica,Arial,Verdana;*/
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-image: url('@Url.Content("images/b28.gif")');
+        }
+    </style>
+
+    </style>
+    <!--<link type="text/css" rel="stylesheet" href="/css/tree.css" />-->
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.fixed.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="/sweetalert/sweetalert.css" />
+    <link type="text/css" rel="stylesheet" href="/moment/moment.css" />
+    <link type="text/css" rel="stylesheet" href="/css/common.css?sss" />
+    <link type="text/css" rel="stylesheet" href="/css/zoom.css" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed/rss" />
+
+    @RenderSection("styles", false)
+
+    <!-- 添加 RSS 订阅 -->
+    <!-- <link rel="stylesheet" type="text/css" href="cssmin.php?get=tree&path=css/&v=20150815" /> -->
+    <script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/js/modernizr.custom.94683.js"></script>
+
+    <script type="text/javascript">
+        (function() {
+            var v18 = $.noConflict(true);
+            window.v18 = v18;
+        })();
+    </script>
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="/materialize/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+
+    <!--<script type="text/javascript" src="/js/iNotify.min.js"></script>	-->
+
+    <script type="text/javascript" src="/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.timeago.js"></script>
+    <script type="text/javascript" src="/js/motto.min.js"></script>
+    <script type="text/javascript" src="/js/transition.js"></script>
+    <script type="text/javascript" src="/js/laytpl.js"></script>
+    <script>
+        /*
+                                                                		var brandMotto = new Motto('.brand-logo', {
+                                                                			lyric: 'CMONO.NET',
+                                                                			showUpSpeed: 1000,//你的座右铭将会一个字一个字地出现，这个选项用于设置它们出现的间隔时间。
+                                                                			flashSpeed: 200,//控制你的座右铭从乱码转化成有意义的句子的时间。
+                                                                			flashTimeout: 1000,//设置从座右铭完全输出到乱码转换之间的过渡时间。
+                                                                			callback: function() {  }//乱码转换完成后的回调函数。
+                                                                		});*/
+
+        jQuery.timeago.settings.allowFuture = true;
+
+        /*
+        var iN = iNotify.init({
+        	effect: 'flash',
+        	interval: 500,
+        	message:"热烈欢迎您的访问",
+        	audio:{
+        		file: 'msg.mp4'
+        	},
+        	notification:{
+        		title:"通知！",
+        		body:'热烈欢迎您的访问'
+        	}
+        }).setFavicon(1).player();
+        */
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?c15adc14278071b6546695eb14bbeb5f";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!-- <base href="/" /> -->
+
+
+
+</head>
+
+<body>
+    <!--[if lt IE 9]>
+    <div class="alert alert-danger topframe" role="alert">你的浏览器实在<strong>太太太太太太旧了</strong>，放学别走，升级完浏览器再说 <a target="_blank" class="alert-link" href="http://browsehappy.com">立即升级</a>
+    </div>
+    <![endif]-->
+    @await Component.InvokeAsync("Menu", "")
+
+
+    <div id="askmd" class="modal modal-fixed-footer z-depth-5 rotatein">
+        <div class="modal-content">
+            <h4>一段可有可无但又不得不说的废话</h4>
+
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s6"><a class="active" href="#selfmd1">个人描述</a></li>
+                        <li class="tab col s6"><a href="#selfmd2">履历简介</a></li>
+                    </ul>
+                </div>
+                <div id="selfmd1" class="col s12">
+                    <p class="flow-text">常伟华</p>
+                </div>
+                <div id="selfmd2" class="col s12">
+                    <table class="responsive-table centered">
+                        <thead>
+                            <tr>
+                                <th data-field="id">时间</th>
+                                <th data-field="name">地点</th>
+                                <th data-field="price">岗位</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2015.06-至今</td>
+                                <td>无锡</td>
+                                <td>.NET 软件工程师</td>
+                            </tr>
+                            <tr>
+                                <td>2013.08-2015.3</td>
+                                <td>无锡</td>
+                                <td>软件工程师</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">关闭</a>
+        </div>
+    </div>
+
+    <div id="selfmd" class="modal bottom-sheet fadein-right">
+        <div class="modal-content" style="max-height:120%;">
+            <h4>有一说一</h4>
+            <p>
+                <div class="demo">
+                    <div id="map"></div>
+                </div>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">关闭</a>
+        </div>
+    </div>
+
+    <script>
+        $(function() {
+            $('.modal-trigger').leanModal();
+            //initMap();
+        });
+    </script>
+
+
+
+    <div id="main_container" class="container" style="margin-top:22px;">
+
+        @RenderBody()
+
+    </div>
+
+    @await Component.InvokeAsync("Page", new { page = Page.FOOTER }) 
+    
+    @await Component.InvokeAsync("Page", new { page = Page.FLOATING_BAR })
+
+    <script src="/highlight/highlight.pack.js"></script>
+    <script src="/js/twemoji.min.js"></script>
+    <script src="/moment/moment.min.js"></script>
+    <script src="/js/common.js"></script>
+    <!-- 特殊脚本 -->
+    <script type="text/javascript">
+        <!-- 特殊脚本 -->
+    </script>
+    @RenderSection("scripts", false)
+    <!-- 特殊脚本 -->
+    <script id="contact_info" type="text/html">
+        <h5 class="white-text">{{ d.title }}</h5>
+        <ul>
+            {{# for(var i = 0, len = d.list.length; i
+            < len; i++){ }} <li><a class="white-text" href="{{ d.list[i].link }}" target="_blank">{{ d.list[i].name }} : {{ d.list[i].value }}</a></li>
+                {{# } }}
+        </ul>
+    </script>
+    <script type="text/javascript">
+        var changweihua = {
+            contact: {
+                title: '联系方式',
+                list: [{
+                    name: 'QQ',
+                    value: '1134255297',
+                    link: '#!'
+                }, {
+                    name: 'Skype',
+                    value: 'changweihua@@outlook.com',
+                    link: '#!'
+                }, {
+                    name: '微博',
+                    value: '@@MetroXCode',
+                    link: 'http://weibo.com/cmono'
+                }]
+            },
+            profile: {
+                address: '江苏省 无锡市 无锡新区, 214028',
+                mobile: '185 **** ****',
+                email: 'changweihua@@cmono.net'
+            }
+        };
+
+        var tplHtml = $('#contact_info').html();
+        var tpl = laytpl(tplHtml);
+        tpl.render(changweihua.contact, function(html) {
+            $('#contact_zone').html(html);
+        });
+
+        // $('.c .qq').html(changweihua.contact.qq);
+    </script>
+
+</body>
+
+</html>

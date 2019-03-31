@@ -1,0 +1,85 @@
+@model IEnumerable<ProjectModel>
+
+    @if(Model.Any()) {
+    <div class="row">
+
+        @foreach(var project in Model) {
+        <div class="col s12 l4">
+
+            <div class="card medium">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="pjs/nielsen.msp.png">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">@project.ProjectName<i class="mdi-navigation-more-vert right"></i></span>
+                    <p><a class="teal-text" href="@Url.Action("Detail", "Project", new { id = project.Id })">@project.ProjectSummary</a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title teal-text text-darken-4">项目说明 <i class="mdi-navigation-close right"></i></span>
+                    <p class="teal-text">
+                        @project.ProjectDescription
+                    </p>
+                </div>
+            </div>
+        </div>
+        }
+        <div class="col s12 l4">
+
+            <div class="card medium">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="pjs/nielsen.msp.png">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Nielsen MSP<i class="mdi-navigation-more-vert right"></i></span>
+                    <p><a class="teal-text" href="project/read/1">支持通过用户导入各个报表数据，按照用户需求，自定义报表类型及报表直接的相互联动操作。</a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title teal-text text-darken-4">项目说明 <i class="mdi-navigation-close right"></i></span>
+                    <p class="teal-text">
+                        1. 可在 Apple Store 和安卓应用市场下载 NielsenMSP Insight APP<br /> 2. 负责系统架构及整体设计，采用仓储模式实现数据访问，Unity完成IoC<br /> 3. 编写系统权限模块，日志模块，报表展示模块<br /> 4. 封装报表展示模块，实现 Android，iPhone,iPad 端代码复用<br /> 5. 调用 Android 及 IOS 原生组件，完成系统交互<br />
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12 l4 hide-on-med-only">
+
+            <div class="card medium">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="pjs/siemens.cim.png">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Siemens CIM<i class="mdi-navigation-more-vert right"></i></span>
+                    <p><a class="teal-text" href="http://gallery.echartsjs.com/explore.html?u=bd-1124677796&type=work#sort=createTime~timeframe=all">以客户管理模块为主线，整合热线相关的工作平台，规范及统一的客户信息收集，共享和管理。</a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title teal-text text-darken-4">项目说明 <i class="mdi-navigation-close right"></i></span>
+                    <p class="teal-text">
+                        1. 负责系统架构和数据库设计。<br /> 2. 分配和安排开发任务，管理项目进度和负责代码质量。<br /> 3. 根据用户需求，编写 UC 文档及 WEB API 接口文档。<br /> 4. 编写系统权限模块，日志模块和 用户及对应标签策略识别接口等核心功能<br /> 5. 配合用户进行系统联调和UAT测试<br />
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12 l4">
+
+            <div class="card medium">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="pjs/nielsen.sfa.png">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">罗氏诊断灵机系统<i class="mdi-navigation-more-vert right"></i></span>
+                    <p><a class="teal-text" href="project/read/5">通过该系统，快捷创建各种市场调研报告及数据。</a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title teal-text text-darken-4">项目说明 <i class="mdi-navigation-close right"></i></span>
+                    <p class="teal-text">
+                        1. 业务人员可根据客户需求快速定制市场调研项目报告；客户方人员可以登录本系统查看本公司产品的项目调研报告<br /> 2. 参与系统架构及整体设计<br /> 3. 编写 HighCharts 相关公共模块，实现模板化<br /> 4. 编写系统权限模块，日志模块，报表展示及导出模块
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    }

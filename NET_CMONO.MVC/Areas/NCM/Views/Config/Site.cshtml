@@ -1,0 +1,46 @@
+@model IEnumerable<ConfigurationModel>
+
+<form class="layui-form" action="">
+  @if(Model.Any()){
+    foreach(var cfg in Model) 
+    {
+      <div class="layui-form-item">
+        <label class="layui-form-label">@cfg.ConfigDescription</label>
+        <div class="layui-input-block">
+          @switch((ConfigEditionMode)cfg.EditMode)
+          {
+            case ConfigEditionMode.SINGLE_LINE:
+              <input type="text" name="@cfg.ConfigName" value="@cfg.ConfigValue" required lay-verify="required" placeholder="请输入 @cfg.ConfigDescription" autocomplete="off" class="layui-input">
+              break;
+            case ConfigEditionMode.MULTI_LINE:
+              <textarea name="@cfg.ConfigName" required lay-verify="required" placeholder="请输入 @cfg.ConfigDescription" autocomplete="off" class="layui-textarea">@cfg.ConfigValue</textarea>
+              break;
+            case ConfigEditionMode.PLAIN_TEXT:
+            default:
+              break;
+          }
+        </div>
+      </div>
+    }
+  }
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+
+@section scripts{
+    <script>
+        layui.use('form', function(){
+            var form = layui.form;
+            
+            //监听提交
+            form.on('submit(formDemo)', function(data){
+                layer.msg(JSON.stringify(data.field));
+                return false;
+            });
+        });
+    </script>
+}

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NET_CMONO.Model\NET_CMONO.Model.csproj" />
+    <ProjectReference Include="..\NET_CMONO.Framework\NET_CMONO.Framework.csproj" />
+    <ProjectReference Include="..\NET_CMONO.EfRepository\NET_CMONO.EfRepository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="4.4.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.2" />
+  </ItemGroup>
+
+</Project>

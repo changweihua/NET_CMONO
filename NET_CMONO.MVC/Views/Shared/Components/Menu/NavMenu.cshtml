@@ -1,0 +1,51 @@
+@model IEnumerable<MenuModel>
+<MenuModel>
+
+    <nav class="teal lighten-1 header " role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo shine rotatein flash-hover">CMONO.NET</a>
+            <ul class="right navi_cc hide-on-med-and-down">
+                @if(Model.Any()) 
+                {
+                    @foreach(var menu in Model) 
+                    {
+                        if(string.IsNullOrEmpty(menu.MenuLink))
+                        {
+                            <li><a class="quta fadein-top" href="@Url.Action(menu.MenuAction, menu.MenuController)" target="_blank">@menu.MenuName</a></li>
+                        }
+                        else
+                        {
+                            <li><a class="quta fadein-top" href="@menu.MenuLink" target="_blank">@menu.MenuName</a></li>
+                        }
+                    }
+                }
+                <li><a class="dropdown-button fadein-top" href="#!" data-activates="dropdown1">Menus<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+            </ul>
+            <ul id="dropdown1" style="z-index:999;" class="dropdown-content">
+                <li class="active fadein-bottom"><a href="/post/listi">Articles</a></li>
+                <li class="divider"></li>
+                <li class="active fadein-bottom"><a href="/project/list">Projects</a></li>
+                <li class="divider"></li>
+                <li class="active fadein-bottom"><a href="/book/list">Books</a></li>
+                <li class="divider"></li>
+                <li class="active fadein-bottom"><a href="/home/trip" target="_blank">Traces</a></li>
+                <li class="divider"></li>
+                <li class="active fadein-bottom"><a href="/home/study" target="_blank">Schedule</a></li>
+            </ul>
+            <ul id="nav-mobile" class="side-nav">
+                <li class="active bouncein"><a href="/post/listi">Articles</a></li>
+                <li class="divider"></li>
+                <!--<li ><a class="bouncein" href="/echarts3" target="_blank">ECharts3</a></li>-->
+                <li class="divider"></li>
+                <li><a class="bouncein" href="/analysis">Analysis</a></li>
+                <li class="divider"></li>
+                <li><a class="bouncein" href="/project/list/1">Projects</a></li>
+                <li class="divider"></li>
+                <li><a class="bouncein" href="/book/list/1">Books</a></li>
+                <li class="divider"></li>
+                <li><a class="bouncein" href="/feed/rss">RSS</a></li>
+                <li class="divider"></li>
+                <li><a class="bouncein" href="/about.php">About</a></li>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        </div>
+    </nav>

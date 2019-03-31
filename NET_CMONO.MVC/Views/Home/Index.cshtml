@@ -1,0 +1,81 @@
+﻿@{ ViewData["Title"] = "Home Page"; } 
+
+@await Component.InvokeAsync("TopWidget", new { viewName = "TopProject" })
+
+
+<div class="row">
+            <div class="col s12">
+                <ul class="tabs hide-on-small-only ">
+                    <li class="tab col s3 "><a class="active" href="#test1">最新文章</a></li>
+                    <li class="tab col s3 "><a href="#test3">最新评论</a></li>
+                    <li class="tab col s3 "><a href="#test4">胡言乱语</a></li>
+                </ul>
+            </div>
+            <div id="test1" class="col s12">
+                <ul class="collection">
+                    <li class="collection-item fadein-left" data-position="right" data-tooltip="SQL数据类型（SQL SERVER六个类型使用）">
+                        <div>SQL数据类型（SQL SERVER六个类型使用）<a href="post/read/344" title="SQL数据类型（SQL SERVER六个类型使用）" class="secondary-content truncate"><i class="mdi-navigation-arrow-forward"></i></a></div>
+                    </li>
+                    <li class="collection-item fadein-left" data-position="right" data-tooltip="ASP.NET Core 十种方式扩展你的 Views">
+                        <div>ASP.NET Core 十种方式扩展你的 Views<a href="post/read/343" title="ASP.NET Core 十种方式扩展你的 Views" class="secondary-content truncate"><i class="mdi-navigation-arrow-forward"></i></a></div>
+                    </li>
+                    <li class="collection-item fadein-left" data-position="right" data-tooltip="C# 利用反射动态创建泛型类型的对象，泛型类型支持带参的构造函数">
+                        <div>C# 利用反射动态创建泛型类型的对象，泛型类型支持带参的构造函数<a href="post/read/342" title="C# 利用反射动态创建泛型类型的对象，泛型类型支持带参的构造函数" class="secondary-content truncate"><i class="mdi-navigation-arrow-forward"></i></a></div>
+                    </li>
+                    <li class="collection-item fadein-left" data-position="right" data-tooltip="SQLServer 存储过程返回值总结">
+                        <div>SQLServer 存储过程返回值总结<a href="post/read/341" title="SQLServer 存储过程返回值总结" class="secondary-content truncate"><i class="mdi-navigation-arrow-forward"></i></a></div>
+                    </li>
+                    <li class="collection-item fadein-left" data-position="right" data-tooltip="大批量导入数据SqlBulkCopy类">
+                        <div>大批量导入数据SqlBulkCopy类<a href="post/read/340" title="大批量导入数据SqlBulkCopy类" class="secondary-content truncate"><i class="mdi-navigation-arrow-forward"></i></a></div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="test3" class="col s12">
+                <ul class="collection">
+                    <!-- <li class="collection-item tooltipped" -->
+                    <li class="collection-item fadein-left" data-position="bottom" data-delay="50" data-tooltip="changweihua@@outlook.com">
+                        <div>changweihua@@outlook.com<a href="post/read/182" title="changweihua@@outlook.com" class="secondary-content"><i class="mdi-navigation-arrow-forward"></i></a></div>
+                    </li>
+                    <!-- <li class="collection-item tooltipped" -->
+                    <li class="collection-item fadein-left" data-position="bottom" data-delay="50" data-tooltip="其实我想要的就是图标旋转的效果，其他什么的看得真的想吐">
+                        <div>其实我想要的就是图标旋转的效果，其他什么的看得真的想吐<a href="post/read/183" title="其实我想要的就是图标旋转的效果，其他什么的看得真的想吐" class="secondary-content"><i class="mdi-navigation-arrow-forward"></i></a></div>
+                    </li>
+                    <!-- <li class="collection-item tooltipped" -->
+                    <li class="collection-item fadein-left" data-position="bottom" data-delay="50" data-tooltip="Test">
+                        <div>Test<a href="post/read/183" title="Test" class="secondary-content"><i class="mdi-navigation-arrow-forward"></i></a></div>
+                    </li>
+                    <!-- <li class="collection-item tooltipped" -->
+                    <li class="collection-item fadein-left" data-position="bottom" data-delay="50" data-tooltip="Test">
+                        <div>Test<a href="post/read/183" title="Test" class="secondary-content"><i class="mdi-navigation-arrow-forward"></i></a></div>
+                    </li>
+                    <!-- <li class="collection-item tooltipped" -->
+                    <li class="collection-item fadein-left" data-position="bottom" data-delay="50" data-tooltip="CancellationTokenSource ">
+                        <div>CancellationTokenSource <a href="post/read/150" title="CancellationTokenSource " class="secondary-content"><i class="mdi-navigation-arrow-forward"></i></a></div>
+                    </li>
+                </ul>
+            </div>
+            <div id="test4" class="col s12">
+
+                <ul class="collection">
+                    <li class="collection-item fadein-left">
+                        <div>同志仍需加强沟通和表达能力 <span class="badge"><i class="mdi-action-visibility"></i> 0 &ensp;&ensp;&ensp; <i class="mdi-communication-comment"></i> 0</span></div>
+                    </li>
+                    <li class="collection-item fadein-left">
+                        <div>NPOI来实现，要在同一Excel文件中创建多个sheet，只需要在同一个workbook中创建多个sheet即可。要注意的是，sheet的名字一定不能重复。 <span class="badge"><i class="mdi-action-visibility"></i> 0 &ensp;&ensp;&ensp; <i class="mdi-communication-comment"></i> 0</span></div>
+                    </li>
+                    <li class="collection-item fadein-left">
+                        <div>获取字段当前长度 select DATALENGTH (CatalogName) from T_Catalog <span class="badge"><i class="mdi-action-visibility"></i> 0 &ensp;&ensp;&ensp; <i class="mdi-communication-comment"></i> 0</span></div>
+                    </li>
+                    <li class="collection-item fadein-left">
+                        <div>SELECT CatalogId,COUNT(1) OVER() AS total FROM dbo.T_Catalog ORDER BY CatalogId DESC OFFSET 2 ROW FETCH NEXT 2 ROWS ONLY <span class="badge"><i class="mdi-action-visibility"></i> 0 &ensp;&ensp;&ensp; <i class="mdi-communication-comment"></i> 0</span></div>
+                    </li>
+                    <li class="collection-item fadein-left">
+                        <div>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊 <span class="badge"><i class="mdi-action-visibility"></i> 0 &ensp;&ensp;&ensp; <i class="mdi-communication-comment"></i> 0</span></div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    

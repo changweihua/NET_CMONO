@@ -1,0 +1,153 @@
+<div class="layui-row">
+  <div class="layui-col-md2">
+    <div class="layui-word-aux">文章类别列表</div>
+  </div>
+  <div class="layui-col-md4 layui-col-md-offset6">
+    <div class="layui-btn-group layui-layout-right">
+        <button class="layui-btn layui-btn-sm" id="btnEditCategory" lay-filter="btnEditCategory">
+            <i class="layui-icon">&#xe608;</i> 添加
+        </button>
+    </div>
+  </div>
+</div>
+
+<br />
+<hr class="layui-bg-cyan" />
+
+<div class="layui-row">
+    <div class="layui-col-md12">
+        <table id="dgArticle" lay-filter="test"></table>
+    </div>
+</div>
+
+
+@section styles{
+    <style>
+        .layui-card-header .layui-layout-left {
+            left: 15px;
+        }
+
+        .layui-card-header .layui-layout-right {
+            right: 15px;
+        }
+    </style>
+} 
+
+@section scripts{
+
+<script type="text/html" id="barDemo">
+    <div class="layui-btn-group">
+        <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">
+        <i class="layui-icon">&#xe654;</i>
+    </button>
+        <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">
+        <i class="layui-icon">&#xe642;</i>
+    </button>
+        <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="del">
+        <i class="layui-icon">&#xe640;</i>
+    </button>
+    </div>
+
+    <!-- 这里同样支持 laytpl 语法，如： -->
+    {{# if(true){ }}
+    <a class="layui-btn layui-btn-xs" lay-event="check">审核</a> {{# } }}
+</script>
+
+
+
+<script>
+    layui.use(['table', 'layer', 'form', 'element'], function() {
+        var table = layui.table;
+        var form = layui.form;
+        var element = layui.element;
+        var $ = layui.$;
+
+        //第一个实例
+        table.render({
+            elem: '#dgArticle',
+            height: 315,
+            url: '@Url.RouteUrl("NCMRoute", new { action = "ArticleList", controller = "Article" })' //数据接口
+                ,
+            page: true //开启分页
+                ,
+            cols: [
+                [ //表头
+                    {
+                        field: 'id',
+                        title: 'ID',
+                        width: '5%',
+                        type: 'numbers',
+                        fixed: 'left'
+                    }, {
+                        field: 'articleTitle',
+                        title: '标题',
+                        width: '20%'
+                    }, {
+                        field: 'articleSummary',
+                        title: '摘要',
+                        width: '35%'
+                    }, {
+                        field: 'createdTime',
+                        title: '创建日期',
+                        width: '15%'
+                    }, {
+                        field: 'action',
+                        title: '操作',
+                        width: '25%',
+                        align: 'center',
+                        toolbar: '#barDemo'
+                    }
+                ]
+            ]
+        });
+
+        //监听工具条
+        table.on('tool(test)', function(obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            var tr = obj.tr; //获得当前行 tr 的DOM对象
+
+            if (layEvent === 'detail') { //查看
+                //do somehing
+            } else if (layEvent === 'del') { //删除
+                layer.confirm('真的删除行么', function(index) {
+                    obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+                    layer.close(index);
+                    //向服务端发送删除指令
+                });
+            } else if (layEvent === 'edit') { //编辑
+                //do something
+
+                //同步更新缓存对应的值
+                obj.update({
+                    username: '123',
+                    title: 'xxx'
+                });
+            }
+        });
+
+        form.on('submit(*)', function(obj) {
+            $.ajax({
+                url: '@Url.RouteUrl("NCMRoute", new { action = "Category", controller = "Article" })',
+                type:'post',
+                data: obj.field,
+                success: function(json){
+                console.log(json)
+                }
+            });
+            return false;
+        });
+
+        $('#btnEditCategory').click(function(evt){
+            layer.open({
+                title: '新增/编辑分类',
+            type: 1,
+            area: ['500px'],
+            anim: 5,
+            content: $('#categoryEditDialog') 
+            });
+        });
+
+    });
+</script>
+}
